@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Employee Bean -->
+    <bean id="emp1" class="com.cognizant.spring_learn.model.Employee">
+        <property name="id" value="1"/>
+        <property name="name" value="Harini"/>
+        <property name="salary" value="50000"/>
+        <property name="permanent" value="true"/>
+        <property name="dateOfBirth">
+            <value>01/06/2001</value>
+        </property>
+        <property name="department" ref="dep1"/>
+        <property name="skillList">
+            <list>
+                <bean class="com.cognizant.spring_learn.model.Skill">
+                    <property name="name" value="Java"/>
+                </bean>
+                <bean class="com.cognizant.spring_learn.model.Skill">
+                    <property name="name" value="Spring Boot"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Department Bean -->
+    <bean id="dep1" class="com.cognizant.spring_learn.model.Department">
+        <property name="id" value="101"/>
+        <property name="name" value="IT"/>
+    </bean>
+
+    <!-- List of Employees -->
+    <bean id="employeeList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="emp1"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>
